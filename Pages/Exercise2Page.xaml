@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Pages.Exercise2Page"
+             Title="Exercise 2: MVVM"
+             BackgroundColor="#0A0D16">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20,24" Spacing="20">
+
+            <!-- Header Banner -->
+            <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
+                <Border WidthRequest="54" HeightRequest="54"
+                        StrokeShape="RoundRectangle 16"
+                        BackgroundColor="#1E1B4B"
+                        Stroke="#4338CA"
+                        StrokeThickness="1"
+                        HorizontalOptions="Center">
+                    <Label Text="⚡" FontSize="26" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border>
+                <Label Text="INotifyPropertyChanged"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="#FFFFFF"
+                       HorizontalOptions="Center" />
+                <Label Text="Two-way data binding demo with live notification"
+                       FontSize="13"
+                       TextColor="#818CF8"
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <!-- Instructions Card -->
+            <Border BackgroundColor="#131726"
+                    Stroke="#22293F"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="16">
+                <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                    <Label Text="ℹ️" FontSize="18" VerticalOptions="Center" />
+                    <Label Text="Select any employee below to view and edit details. Edits in EntryCell update TextCell in real-time."
+                           TextColor="#94A3B8"
+                           FontSize="12"
+                           VerticalOptions="Center"
+                           LineBreakMode="WordWrap"
+                           MaximumWidthRequest="270" />
+                </HorizontalStackLayout>
+            </Border>
+
+            <!-- Employee Cards List -->
+            <VerticalStackLayout Spacing="14">
+
+                <!-- Employee 1 Card -->
+                <Border BackgroundColor="#131726"
+                        Stroke="#22293F"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 16"
+                        Padding="16">
+                    <Grid ColumnDefinitions="52, *, Auto" RowDefinitions="Auto, Auto" ColumnSpacing="14" RowSpacing="4">
+                        <!-- Avatar -->
+                        <Border Grid.RowSpan="2" WidthRequest="50" HeightRequest="50"
+                                StrokeShape="RoundRectangle 25"
+                                BackgroundColor="#4F46E5"
+                                Stroke="Transparent">
+                            <Label Text="JT" TextColor="White" FontAttributes="Bold" FontSize="18"
+                                   HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+
+                        <Label Grid.Column="1" Text="John Thomas" TextColor="#FFFFFF" FontAttributes="Bold" FontSize="16" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="ID: 1001 • Part-Time • johnthomas@gmail.com" TextColor="#94A3B8" FontSize="11" />
+
+                        <Button Grid.RowSpan="2" Grid.Column="2"
+                                x:Name="EmployeeButton1"
+                                Text="Edit →"
+                                Clicked="EmployeeButton1_Clicked"
+                                BackgroundColor="#1E293B"
+                                TextColor="#818CF8"
+                                FontAttributes="Bold"
+                                FontSize="13"
+                                CornerRadius="10"
+                                HeightRequest="40"
+                                Padding="12,0" />
+                    </Grid>
+                </Border>
+
+                <!-- Employee 2 Card -->
+                <Border BackgroundColor="#131726"
+                        Stroke="#22293F"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 16"
+                        Padding="16">
+                    <Grid ColumnDefinitions="52, *, Auto" RowDefinitions="Auto, Auto" ColumnSpacing="14" RowSpacing="4">
+                        <!-- Avatar -->
+                        <Border Grid.RowSpan="2" WidthRequest="50" HeightRequest="50"
+                                StrokeShape="RoundRectangle 25"
+                                BackgroundColor="#059669"
+                                Stroke="Transparent">
+                            <Label Text="PP" TextColor="White" FontAttributes="Bold" FontSize="18"
+                                   HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+
+                        <Label Grid.Column="1" Text="Peter Parker" TextColor="#FFFFFF" FontAttributes="Bold" FontSize="16" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="ID: 1002 • Full-Time • peter@gmail.com" TextColor="#94A3B8" FontSize="11" />
+
+                        <Button Grid.RowSpan="2" Grid.Column="2"
+                                x:Name="EmployeeButton2"
+                                Text="Edit →"
+                                Clicked="EmployeeButton2_Clicked"
+                                BackgroundColor="#1E293B"
+                                TextColor="#34D399"
+                                FontAttributes="Bold"
+                                FontSize="13"
+                                CornerRadius="10"
+                                HeightRequest="40"
+                                Padding="12,0" />
+                    </Grid>
+                </Border>
+
+                <!-- Employee 3 Card -->
+                <Border BackgroundColor="#131726"
+                        Stroke="#22293F"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 16"
+                        Padding="16">
+                    <Grid ColumnDefinitions="52, *, Auto" RowDefinitions="Auto, Auto" ColumnSpacing="14" RowSpacing="4">
+                        <!-- Avatar -->
+                        <Border Grid.RowSpan="2" WidthRequest="50" HeightRequest="50"
+                                StrokeShape="RoundRectangle 25"
+                                BackgroundColor="#D97706"
+                                Stroke="Transparent">
+                            <Label Text="AG" TextColor="White" FontAttributes="Bold" FontSize="18"
+                                   HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+
+                        <Label Grid.Column="1" Text="Andrew Garfield" TextColor="#FFFFFF" FontAttributes="Bold" FontSize="16" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="ID: 1003 • Part-Time • andraw@gmail.com" TextColor="#94A3B8" FontSize="11" />
+
+                        <Button Grid.RowSpan="2" Grid.Column="2"
+                                x:Name="EmployeeButton3"
+                                Text="Edit →"
+                                Clicked="EmployeeButton3_Clicked"
+                                BackgroundColor="#1E293B"
+                                TextColor="#FBBF24"
+                                FontAttributes="Bold"
+                                FontSize="13"
+                                CornerRadius="10"
+                                HeightRequest="40"
+                                Padding="12,0" />
+                    </Grid>
+                </Border>
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

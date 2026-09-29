@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Pages.EmployeeDetailPage2"
+             xmlns:vm="clr-namespace:MauiApp1.ViewModels"
+             Title="Edit Employee (Toolkit)"
+             x:DataType="vm:EmployeeDetailViewModels2"
+             BackgroundColor="#0A0D16">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20,24" Spacing="20">
+
+            <!-- Live Mirror Banner -->
+            <Border BackgroundColor="#131726"
+                    Stroke="#22293F"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 20"
+                    Padding="22,24">
+                <VerticalStackLayout Spacing="12" HorizontalOptions="Center">
+                    <Border WidthRequest="72" HeightRequest="72"
+                            StrokeShape="RoundRectangle 36"
+                            BackgroundColor="#1E1B4B"
+                            Stroke="#6366F1"
+                            StrokeThickness="2"
+                            HorizontalOptions="Center">
+                        <Label Text="📦" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                    <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                        <Label Text="{Binding EmployeeName}"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="#FFFFFF"
+                               HorizontalOptions="Center" />
+                        <Label Text="{Binding Email}"
+                               FontSize="13"
+                               TextColor="#818CF8"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                    <Label Text="Live updates triggered via ObservableProperty source generator"
+                           FontSize="11"
+                           TextColor="#10B981"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Editable Fields Card -->
+            <Border BackgroundColor="#131726"
+                    Stroke="#22293F"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="18">
+                <VerticalStackLayout Spacing="16">
+
+                    <!-- Employee ID -->
+                    <VerticalStackLayout Spacing="6">
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="EMPLOYEE ID" TextColor="#94A3B8" FontSize="11" FontAttributes="Bold" />
+                            <Label Text="{Binding EmployeeID, StringFormat='(Current: {0})'}" TextColor="#818CF8" FontSize="11" />
+                        </HorizontalStackLayout>
+                        <Border BackgroundColor="#0C0F1A" Stroke="#262E45" StrokeShape="RoundRectangle 10" Padding="12,2">
+                            <Entry x:Name="txtempid" Text="{Binding EmployeeID}" TextColor="#FFFFFF" FontSize="14" />
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Employee Name -->
+                    <VerticalStackLayout Spacing="6">
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="EMPLOYEE NAME" TextColor="#94A3B8" FontSize="11" FontAttributes="Bold" />
+                            <Label Text="{Binding EmployeeName, StringFormat='(Current: {0})'}" TextColor="#818CF8" FontSize="11" />
+                        </HorizontalStackLayout>
+                        <Border BackgroundColor="#0C0F1A" Stroke="#262E45" StrokeShape="RoundRectangle 10" Padding="12,2">
+                            <Entry x:Name="txtempname" Text="{Binding EmployeeName}" TextColor="#FFFFFF" FontSize="14" />
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Email -->
+                    <VerticalStackLayout Spacing="6">
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="EMAIL ADDRESS" TextColor="#94A3B8" FontSize="11" FontAttributes="Bold" />
+                            <Label Text="{Binding Email, StringFormat='(Current: {0})'}" TextColor="#818CF8" FontSize="11" />
+                        </HorizontalStackLayout>
+                        <Border BackgroundColor="#0C0F1A" Stroke="#262E45" StrokeShape="RoundRectangle 10" Padding="12,2">
+                            <Entry x:Name="txtemail" Text="{Binding Email}" TextColor="#FFFFFF" FontSize="14" />
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Part Time Switch -->
+                    <Grid ColumnDefinitions="*, Auto" VerticalOptions="Center">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="Part-Time Position" TextColor="#FFFFFF" FontSize="14" FontAttributes="Bold" />
+                            <Label Text="Toggle part-time work schedule" TextColor="#94A3B8" FontSize="11" />
+                        </VerticalStackLayout>
+                        <Switch Grid.Column="1" IsToggled="{Binding IsPartTime}" OnColor="#6366F1" ThumbColor="#FFFFFF" VerticalOptions="Center" />
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

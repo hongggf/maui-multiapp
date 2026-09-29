@@ -3,56 +3,67 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.CalculatorPage"
              Title="Calculator"
-             BackgroundColor="#202020">
+             BackgroundColor="#0A0D16">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="NumBtn" TargetType="Button">
                 <Setter Property="FontSize" Value="22" />
-                <Setter Property="BackgroundColor" Value="#3A3A3A" />
-                <Setter Property="TextColor" Value="White" />
-                <Setter Property="CornerRadius" Value="8" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="BackgroundColor" Value="#171B2B" />
+                <Setter Property="TextColor" Value="#F8FAFC" />
+                <Setter Property="CornerRadius" Value="14" />
             </Style>
             <Style x:Key="FuncBtn" TargetType="Button" BasedOn="{StaticResource NumBtn}">
-                <Setter Property="BackgroundColor" Value="#2C2C2C" />
+                <Setter Property="BackgroundColor" Value="#1C2236" />
+                <Setter Property="TextColor" Value="#38BDF8" />
                 <Setter Property="FontSize" Value="18" />
             </Style>
             <Style x:Key="OpBtn" TargetType="Button" BasedOn="{StaticResource NumBtn}">
-                <Setter Property="BackgroundColor" Value="#4A4A4A" />
+                <Setter Property="BackgroundColor" Value="#4F46E5" />
+                <Setter Property="TextColor" Value="White" />
             </Style>
             <Style x:Key="EqualsBtn" TargetType="Button" BasedOn="{StaticResource NumBtn}">
-                <Setter Property="BackgroundColor" Value="#6A5ACD" />
+                <Setter Property="BackgroundColor" Value="#10B981" />
+                <Setter Property="TextColor" Value="White" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid Padding="10" RowDefinitions="Auto,Auto,*" RowSpacing="10">
+    <Grid Padding="14,16" RowDefinitions="Auto,*" RowSpacing="14">
 
-        <!-- Expression / history line -->
-        <Label Grid.Row="0"
-               x:Name="ExpressionLabel"
-               Text=""
-               FontSize="18"
-               TextColor="#AAAAAA"
-               HorizontalTextAlignment="End"
-               Margin="10,10,10,0" />
+        <!-- Display Card -->
+        <Border Grid.Row="0"
+                BackgroundColor="#111524"
+                Stroke="#21283E"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 16"
+                Padding="16,12">
+            <VerticalStackLayout Spacing="2">
+                <!-- Expression / history line -->
+                <Label x:Name="ExpressionLabel"
+                       Text=""
+                       FontSize="16"
+                       TextColor="#94A3B8"
+                       HorizontalTextAlignment="End"
+                       HeightRequest="24" />
 
-        <!-- Main display -->
-        <Label Grid.Row="1"
-               x:Name="DisplayLabel"
-               Text="0"
-               FontSize="48"
-               FontAttributes="Bold"
-               TextColor="White"
-               HorizontalTextAlignment="End"
-               LineBreakMode="TailTruncation"
-               Margin="10,0,10,10" />
+                <!-- Main display -->
+                <Label x:Name="DisplayLabel"
+                       Text="0"
+                       FontSize="44"
+                       FontAttributes="Bold"
+                       TextColor="#FFFFFF"
+                       HorizontalTextAlignment="End"
+                       LineBreakMode="TailTruncation" />
+            </VerticalStackLayout>
+        </Border>
 
         <!-- Button grid -->
-        <Grid Grid.Row="2"
+        <Grid Grid.Row="1"
               RowDefinitions="*,*,*,*,*,*"
               ColumnDefinitions="*,*,*,*"
-              RowSpacing="8" ColumnSpacing="8">
+              RowSpacing="10" ColumnSpacing="10">
 
             <Button Grid.Row="0" Grid.Column="0" Text="%"   Clicked="OnPercent"   Style="{StaticResource FuncBtn}" />
             <Button Grid.Row="0" Grid.Column="1" Text="CE"  Clicked="OnClearEntry" Style="{StaticResource FuncBtn}" />

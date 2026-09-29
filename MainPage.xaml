@@ -1,69 +1,192 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiApp1.MainPage">
+             x:Class="MauiApp1.MainPage"
+             Title="Loan Calculator"
+             BackgroundColor="#0A0D16">
 
     <ScrollView>
-        <VerticalStackLayout Padding="30" Spacing="20">
+        <VerticalStackLayout Padding="20,24" Spacing="20">
 
-            <Label Text="Loan Calculator"
-                   FontSize="32"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" />
+            <!-- Title & Subtitle Header -->
+            <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                <Label Text="Loan Calculator"
+                       FontSize="26"
+                       FontAttributes="Bold"
+                       TextColor="#FFFFFF"
+                       HorizontalOptions="Center" />
+                <Label Text="Calculate monthly payments &amp; total interest"
+                       FontSize="13"
+                       TextColor="#818CF8"
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
 
-            <Grid ColumnDefinitions="150,*"
-                  RowDefinitions="Auto,Auto,Auto"
-                  RowSpacing="15"
-                  ColumnSpacing="10">
+            <!-- Input Card -->
+            <Border BackgroundColor="#131726"
+                    Stroke="#22293F"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="18">
+                <VerticalStackLayout Spacing="16">
 
-                <Label Grid.Row="0" Grid.Column="0"
-                       Text="Loan Amount"
-                       VerticalOptions="Center" />
-                <Entry Grid.Row="0" Grid.Column="1"
-                       x:Name="LoanAmountEntry"
-                       Placeholder="Enter loan amount"
-                       Keyboard="Numeric" />
+                    <!-- Loan Amount -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="LOAN AMOUNT ($)"
+                               TextColor="#94A3B8"
+                               FontSize="11"
+                               FontAttributes="Bold" />
+                        <Border BackgroundColor="#0C0F1A"
+                                Stroke="#262E45"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 10"
+                                Padding="12,2">
+                            <Entry x:Name="LoanAmountEntry"
+                                   Placeholder="e.g. 25000"
+                                   PlaceholderColor="#475569"
+                                   TextColor="#FFFFFF"
+                                   FontSize="16"
+                                   Keyboard="Numeric" />
+                        </Border>
+                    </VerticalStackLayout>
 
-                <Label Grid.Row="1" Grid.Column="0"
-                       Text="Interest Rate (%)"
-                       VerticalOptions="Center" />
-                <Entry Grid.Row="1" Grid.Column="1"
-                       x:Name="InterestRateEntry"
-                       Placeholder="Enter interest rate"
-                       Keyboard="Numeric" />
+                    <!-- Interest Rate -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="ANNUAL INTEREST RATE (%)"
+                               TextColor="#94A3B8"
+                               FontSize="11"
+                               FontAttributes="Bold" />
+                        <Border BackgroundColor="#0C0F1A"
+                                Stroke="#262E45"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 10"
+                                Padding="12,2">
+                            <Entry x:Name="InterestRateEntry"
+                                   Placeholder="e.g. 5.5"
+                                   PlaceholderColor="#475569"
+                                   TextColor="#FFFFFF"
+                                   FontSize="16"
+                                   Keyboard="Numeric" />
+                        </Border>
+                    </VerticalStackLayout>
 
-                <Label Grid.Row="2" Grid.Column="0"
-                       Text="Loan Term (Years)"
-                       VerticalOptions="Center" />
-                <Entry Grid.Row="2" Grid.Column="1"
-                       x:Name="LoanTermEntry"
-                       Placeholder="Enter loan term"
-                       Keyboard="Numeric" />
+                    <!-- Loan Term -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="LOAN TERM (YEARS)"
+                               TextColor="#94A3B8"
+                               FontSize="11"
+                               FontAttributes="Bold" />
+                        <Border BackgroundColor="#0C0F1A"
+                                Stroke="#262E45"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 10"
+                                Padding="12,2">
+                            <Entry x:Name="LoanTermEntry"
+                                   Placeholder="e.g. 5"
+                                   PlaceholderColor="#475569"
+                                   TextColor="#FFFFFF"
+                                   FontSize="16"
+                                   Keyboard="Numeric" />
+                        </Border>
+                    </VerticalStackLayout>
 
-            </Grid>
+                    <!-- Calculate Button -->
+                    <Button Text="Calculate Loan"
+                            Clicked="OnCalculateClicked"
+                            BackgroundColor="#6366F1"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            CornerRadius="12"
+                            HeightRequest="52"
+                            Margin="0,6,0,0" />
 
-            <Button Text="Calculate"
-                    Clicked="OnCalculateClicked"
-                    BackgroundColor="#6A5ACD"
-                    TextColor="White"
-                    CornerRadius="8"
-                    HeightRequest="50" />
+                </VerticalStackLayout>
+            </Border>
 
-            <Grid ColumnDefinitions="150,*"
-                  RowDefinitions="Auto,Auto,Auto"
-                  RowSpacing="15"
-                  ColumnSpacing="10">
+            <!-- Results Section -->
+            <Border BackgroundColor="#131726"
+                    Stroke="#22293F"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="18">
+                <VerticalStackLayout Spacing="14">
 
-                <Label Grid.Row="0" Grid.Column="0" Text="Monthly Payment" />
-                <Label Grid.Row="0" Grid.Column="1" x:Name="MonthlyPaymentLabel" Text="$0.00" />
+                    <Label Text="CALCULATION BREAKDOWN"
+                           TextColor="#94A3B8"
+                           FontSize="11"
+                           FontAttributes="Bold" />
 
-                <Label Grid.Row="1" Grid.Column="0" Text="Total Interest" />
-                <Label Grid.Row="1" Grid.Column="1" x:Name="TotalInterestLabel" Text="$0.00" />
+                    <!-- Monthly Payment Highlight -->
+                    <Border BackgroundColor="#0C0F1A"
+                            Stroke="#1E293B"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 12"
+                            Padding="16,12">
+                        <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                            <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                                <Label Text="Monthly Payment"
+                                       TextColor="#94A3B8"
+                                       FontSize="13" />
+                                <Label Text="Estimated monthly cost"
+                                       TextColor="#475569"
+                                       FontSize="11" />
+                            </VerticalStackLayout>
+                            <Label Grid.Column="1"
+                                   x:Name="MonthlyPaymentLabel"
+                                   Text="$0.00"
+                                   TextColor="#38BDF8"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
 
-                <Label Grid.Row="2" Grid.Column="0" Text="Total Payment" />
-                <Label Grid.Row="2" Grid.Column="1" x:Name="TotalPaymentLabel" Text="$0.00" />
+                    <!-- Total Interest -->
+                    <Border BackgroundColor="#0C0F1A"
+                            Stroke="#1E293B"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 12"
+                            Padding="16,12">
+                        <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                            <Label Grid.Column="0"
+                                   Text="Total Interest"
+                                   TextColor="#94A3B8"
+                                   FontSize="13"
+                                   VerticalOptions="Center" />
+                            <Label Grid.Column="1"
+                                   x:Name="TotalInterestLabel"
+                                   Text="$0.00"
+                                   TextColor="#FBBF24"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
 
-            </Grid>
+                    <!-- Total Payment -->
+                    <Border BackgroundColor="#0C0F1A"
+                            Stroke="#1E293B"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 12"
+                            Padding="16,12">
+                        <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                            <Label Grid.Column="0"
+                                   Text="Total Payment"
+                                   TextColor="#94A3B8"
+                                   FontSize="13"
+                                   VerticalOptions="Center" />
+                            <Label Grid.Column="1"
+                                   x:Name="TotalPaymentLabel"
+                                   Text="$0.00"
+                                   TextColor="#34D399"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                </VerticalStackLayout>
+            </Border>
 
         </VerticalStackLayout>
     </ScrollView>

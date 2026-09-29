@@ -2,26 +2,102 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.TemperaturePage"
-             Title="Temp Converter">
-    <VerticalStackLayout Padding="30" Spacing="20">
+             Title="Temp Converter"
+             BackgroundColor="#0A0D16">
 
-        <Label Text="Temperature Converter"
-               FontSize="28" FontAttributes="Bold"
-               HorizontalOptions="Center" />
+    <ScrollView>
+        <VerticalStackLayout Padding="20,28" Spacing="24">
 
-        <Entry x:Name="TempEntry"
-               Placeholder="Enter a temperature"
-               Keyboard="Numeric" />
+            <!-- Header -->
+            <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                <Label Text="Temperature Converter"
+                       FontSize="26"
+                       FontAttributes="Bold"
+                       TextColor="#FFFFFF"
+                       HorizontalOptions="Center" />
+                <Label Text="Instant Celsius &amp; Fahrenheit conversion"
+                       FontSize="13"
+                       TextColor="#38BDF8"
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
 
-        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
-            <Button Text="°F → °C" Clicked="OnFtoC" BackgroundColor="#6A5ACD" TextColor="White" />
-            <Button Text="°C → °F" Clicked="OnCtoF" BackgroundColor="#6A5ACD" TextColor="White" />
-        </HorizontalStackLayout>
+            <!-- Conversion Card -->
+            <Border BackgroundColor="#131726"
+                    Stroke="#22293F"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 18"
+                    Padding="22">
+                <VerticalStackLayout Spacing="20">
 
-        <Label x:Name="ResultLabel"
-               Text="Result: --"
-               FontSize="22"
-               HorizontalOptions="Center" />
+                    <!-- Input Box -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="ENTER TEMPERATURE VALUE"
+                               TextColor="#94A3B8"
+                               FontSize="11"
+                               FontAttributes="Bold" />
+                        <Border BackgroundColor="#0C0F1A"
+                                Stroke="#262E45"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 12"
+                                Padding="16,4">
+                            <Entry x:Name="TempEntry"
+                                   Placeholder="e.g. 98.6 or 37"
+                                   PlaceholderColor="#475569"
+                                   TextColor="#FFFFFF"
+                                   FontSize="18"
+                                   Keyboard="Numeric" />
+                        </Border>
+                    </VerticalStackLayout>
 
-    </VerticalStackLayout>
+                    <!-- Action Buttons -->
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <Button Grid.Column="0"
+                                Text="°F → °C"
+                                Clicked="OnFtoC"
+                                BackgroundColor="#0284C7"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                CornerRadius="12"
+                                HeightRequest="52" />
+
+                        <Button Grid.Column="1"
+                                Text="°C → °F"
+                                Clicked="OnCtoF"
+                                BackgroundColor="#EA580C"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                CornerRadius="12"
+                                HeightRequest="52" />
+                    </Grid>
+
+                    <!-- Digital Gauge / Result Card -->
+                    <Border BackgroundColor="#0C0F1A"
+                            Stroke="#1E293B"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 14"
+                            Padding="20,18"
+                            Margin="0,8,0,0">
+                        <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
+                            <Label Text="CONVERTED RESULT"
+                                   TextColor="#94A3B8"
+                                   FontSize="11"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Center" />
+                            <Label x:Name="ResultLabel"
+                                   Text="Result: --"
+                                   FontSize="28"
+                                   FontAttributes="Bold"
+                                   TextColor="#38BDF8"
+                                   HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>

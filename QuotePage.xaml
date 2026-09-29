@@ -1,25 +1,92 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiApp1.QuotePage">
+             x:Class="MauiApp1.QuotePage"
+             Title="Quote Generator"
+             BackgroundColor="#0A0D16">
 
-    <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="Center">
+    <ScrollView>
+        <VerticalStackLayout Padding="20,28" Spacing="24">
 
-        <Label Text="Phone Number Horoscope" 
-               FontSize="24" 
-               HorizontalOptions="Center" />
+            <!-- Header -->
+            <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                <Label Text="Cosmic Numerology"
+                       FontSize="26"
+                       FontAttributes="Bold"
+                       TextColor="#FFFFFF"
+                       HorizontalOptions="Center" />
+                <Label Text="Unlock fortunes encoded in your numbers"
+                       FontSize="13"
+                       TextColor="#A78BFA"
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
 
-        <Entry x:Name="NumberEntry" 
-               Placeholder="Enter your phone number (e.g., 089298900)" 
-               Keyboard="Numeric" />
+            <!-- Card -->
+            <Border BackgroundColor="#131626"
+                    Stroke="#2B2648"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 18"
+                    Padding="22">
+                <VerticalStackLayout Spacing="20">
 
-        <Button Text="Read My Horoscope" 
-                Clicked="OnGetQuote" />
+                    <!-- Input Box -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="ENTER PHONE NUMBER"
+                               TextColor="#94A3B8"
+                               FontSize="11"
+                               FontAttributes="Bold" />
+                        <Border BackgroundColor="#0C0E1A"
+                                Stroke="#2E284A"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 12"
+                                Padding="16,4">
+                            <Entry x:Name="NumberEntry"
+                                   Placeholder="e.g. 089298900"
+                                   PlaceholderColor="#475569"
+                                   TextColor="#FFFFFF"
+                                   FontSize="18"
+                                   Keyboard="Numeric" />
+                        </Border>
+                    </VerticalStackLayout>
 
-        <Label x:Name="QuoteLabel" 
-               FontSize="18" 
-               HorizontalOptions="Center" 
-               HorizontalTextAlignment="Center" />
+                    <!-- Read Horoscope Button -->
+                    <Button Text="✨ Read My Horoscope"
+                            Clicked="OnGetQuote"
+                            BackgroundColor="#7C3AED"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            CornerRadius="12"
+                            HeightRequest="52" />
 
-    </VerticalStackLayout>
+                    <!-- Oracle Output Card -->
+                    <Border BackgroundColor="#0C0E1A"
+                            Stroke="#3B2D62"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 14"
+                            Padding="22,24"
+                            Margin="0,6,0,0">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="DAILY INSIGHT"
+                                   TextColor="#A78BFA"
+                                   FontSize="11"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Center" />
+                            <Label x:Name="QuoteLabel"
+                                   Text="Enter a number above and reveal your horoscope."
+                                   FontSize="17"
+                                   FontAttributes="Italic"
+                                   TextColor="#E2E8F0"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"
+                                   LineHeight="1.3" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>
